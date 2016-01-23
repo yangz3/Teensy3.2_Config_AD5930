@@ -1,7 +1,7 @@
 # Teensy3.2_Config_AD5930
 Teensy3.2 (32 bit ARM Cortex-M4) configs AD5930 to output 100KHz sine wave
 
-I found little tutorial online for configuring AD5930, specially the arduino-style examples and code. I made this tutorial, hoping to help people setting up the pipeline more easily.
+Compared with other DDS chips, AD5930 is compatible with 3.3V logic SOC, which compares favorable than AD9835 (5V logic) in our project. However, I found little tutorial online for configuring AD5930, specially the arduino-style examples and code. I made this tutorial, hoping to help people setting up the pipeline more easily.
 
 Teensy 3.2 can be found here:
 https://www.pjrc.com/store/teensy32.html
