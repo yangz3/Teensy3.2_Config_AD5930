@@ -134,8 +134,7 @@ void setNumIncr(uint16_t num){
 }
 
 void spiWriteWord(uint16_t val) {
-  // Take the SS pin low to select the chip:
-  digitalWrite(FSYNC,LOW);
+  
   delay(1);
   
   // Send in the address and value via SPI:
@@ -143,13 +142,15 @@ void spiWriteWord(uint16_t val) {
   SPI.transfer(val & 0xff);
   
   delay(1);
-  // Take the SS pin high to de-select the chip:
-  digitalWrite(FSYNC,HIGH); 
+  
 }
 
 void configAD5930(){
   SPI.begin();
   SPI.beginTransaction(settingsA);
+
+  // Take the SS pin low to select the chip:
+  digitalWrite(FSYNC,LOW);
 
   setStartFreq(100000); // Set start freqency 
   setDeltaFreq(0); // Set frequency increment
@@ -160,6 +161,10 @@ void configAD5930(){
   spiWriteWord(0x8000); // Set burst interval 
   
   spiWriteWord(ctrl_reg_val); //Set Control Reg (configuring control register has to be the last)
+  
+  // Take the SS pin high to de-select the chip:
+  digitalWrite(FSYNC,HIGH); 
+  
   SPI.endTransaction();
 }
 
